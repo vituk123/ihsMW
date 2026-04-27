@@ -1,0 +1,79 @@
+url: https://username.github.io/ihsMW
+title: ihsMW — Malawi IHS Data in R
+description: >
+  An R interface to the Malawi Integrated Household Survey (IHS),
+  powered by the World Bank Microdata Library API. Search variables,
+  download data, and work with complex survey designs — all from R.
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#1a6b4a"
+    base_font: {google: "Source Sans Pro"}
+    heading_font: {google: "Source Serif Pro"}
+    code_font: {google: "JetBrains Mono"}
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [github]
+  components:
+    intro:
+      text: Get started
+      href: articles/getting-started.html
+    articles:
+      text: Articles
+      menu:
+        - text: Getting started
+          href: articles/getting-started.html
+        - text: Cross-round harmonisation
+          href: articles/harmonisation.html
+        - text: Survey weights
+          href: articles/survey-weights.html
+    github:
+      icon: fab fa-github
+      href: https://github.com/vituk123/ihsMW
+      aria-label: GitHub
+
+reference:
+  - title: "Query data"
+    desc: "Download IHS microdata into R"
+    contents:
+      - IHS
+      - IHS_survey
+  - title: "Discover variables"
+    desc: "Search and explore IHS variables without downloading data"
+    contents:
+      - ihs_search
+      - ihs_variables
+      - ihs_label
+      - ihs_modules
+  - title: "Setup and authentication"
+    desc: "One-time configuration"
+    contents:
+      - ihs_auth
+  - title: "Cache management"
+    desc: "Manage locally cached data files"
+    contents:
+      - ihs_cache_info
+      - ihs_cache_clear
+  - title: "Harmonisation tools"
+    desc: "Tools for cross-round analysis"
+    contents:
+      - ihs_crosswalk_check
+  - title: "Extensibility"
+    desc: "Explore other available Malawi surveys"
+    contents:
+      - mwi_surveys
+  - title: "Built-in data"
+    desc: "Crosswalk and reference data shipped with the package"
+    contents:
+      - ihs_crosswalk
+
+footer:
+  structure:
+    left: built_with
+    right: data
+  components:
+    built_with: "Built with [pkgdown](https://pkgdown.r-lib.org/)"
+    data: "Data: [NSO Malawi](https://www.nsomalawi.mw/) / [World Bank LSMS](https://www.worldbank.org/en/programs/lsms)"
