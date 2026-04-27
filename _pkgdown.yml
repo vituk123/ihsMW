@@ -63,8 +63,7 @@ reference:
       - ihs_crosswalk_check
   - title: "Extensibility"
     desc: "Explore other available Malawi surveys"
-    contents:
-      - mwi_surveys
+    contents: []
   - title: "Built-in data"
     desc: "Crosswalk and reference data shipped with the package"
     contents:
