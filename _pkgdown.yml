@@ -63,8 +63,7 @@ reference:
       - ihs_crosswalk_check
   - title: "Built-in data"
     desc: "Crosswalk and reference data shipped with the package"
-    contents:
-      - ihs_crosswalk
+    contents: []
 
 footer:
   structure:
