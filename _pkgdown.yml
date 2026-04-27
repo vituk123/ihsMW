@@ -61,9 +61,6 @@ reference:
     desc: "Tools for cross-round analysis"
     contents:
       - ihs_crosswalk_check
-  - title: "Extensibility"
-    desc: "Explore other available Malawi surveys"
-    contents: []
   - title: "Built-in data"
     desc: "Crosswalk and reference data shipped with the package"
     contents:
