@@ -52,6 +52,7 @@ reference:
     desc: "One-time configuration"
     contents:
       - ihs_auth
+      - ihs_key_set
   - title: "Cache management"
     desc: "Manage locally cached data files"
     contents:
