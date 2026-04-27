@@ -1,3 +1,7 @@
+## Resubmission (v0.1.1)
+
+- This is a resubmission. The previous submission (v0.1.0) was made before final CI/CD stability fixes were pushed to GitHub. This version (v0.1.1) resolves all build and documentation issues identified in the initial automated checks.
+
 ## Test environments
 
 - Ubuntu 24.04 (GitHub Actions), R release and R devel
@@ -6,7 +10,10 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
+
+- Note: "checking for future file timestamps ... unable to verify current time" (Transient network issue on check environment).
+
 
 ## Notes for CRAN reviewers
 

@@ -5,3 +5,5 @@
 ^README\.Rmd$
 \.Rproj$
 ^LICENSE\.md$
+^CONTRIBUTING\.md$
+^cran-comments\.md$
