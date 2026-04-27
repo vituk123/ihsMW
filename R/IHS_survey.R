@@ -1,18 +1,12 @@
 #' @noRd
 # NOTE: These should be verified against the Basic Information Documents for each
 # round and may need adjustment.
-.ihs_weight_vars <- dplyr::tibble(
-  round = c("IHS1", "IHS2", "IHS3", "IHS4", "IHS5"),
-  weight_var = c("wght", "hh_wgt", "hh_wgt", "hh_wgt", "hhweight"),
-  strata_var = c("stratum", "stratum", "stratum", "stratum", "stratum"),
-  cluster_var = c("ea_id", "ea_code", "ea_id", "ea_id", "ea_id"),
-  notes = c(
-    "Basic household weight",
-    "Household sampling weight",
-    "Household sampling weight",
-    "Household sampling weight",
-    "Household sampling weight - see BID document"
-  )
+.ihs_weight_vars <- tibble::tribble(
+  ~round,  ~weight_var,  ~strata_var,    ~cluster_var, ~notes,
+  "IHS2",  "hhwght",     "strata",       "psu",        "Verified from data columns",
+  "IHS3",  "hh_wgt",     "strata",       "ea_id",      "Verified from data columns",
+  "IHS4",  "hh_wgt",     NA_character_,  "ea_id",      "strata_var not found in data - verify against BID before use",
+  "IHS5",  "hh_wgt",     NA_character_,  "ea_id",      "strata_var not found in data - verify against BID before use"
 )
 
 #' Create a survey design object for Malawi IHS data
@@ -84,9 +78,9 @@ IHS_survey <- function(indicator, round = "IHS5", ...) {
   missing_cols <- c()
   df_names <- tolower(names(df))
   
-  if (!tolower(col_w) %in% df_names) missing_cols <- c(missing_cols, col_w)
-  if (!tolower(col_s) %in% df_names) missing_cols <- c(missing_cols, col_s)
-  if (!tolower(col_c) %in% df_names) missing_cols <- c(missing_cols, col_c)
+  if (!is.na(col_w) && !tolower(col_w) %in% df_names) missing_cols <- c(missing_cols, col_w)
+  if (!is.na(col_s) && !tolower(col_s) %in% df_names) missing_cols <- c(missing_cols, col_s)
+  if (!is.na(col_c) && !tolower(col_c) %in% df_names) missing_cols <- c(missing_cols, col_c)
   
   if (length(missing_cols) > 0) {
     cli::cli_abort(c(
@@ -97,13 +91,13 @@ IHS_survey <- function(indicator, round = "IHS5", ...) {
   }
   
   # Align case map properly with targeted string properties
-  col_w_actual <- names(df)[df_names == tolower(col_w)][1]
-  col_s_actual <- names(df)[df_names == tolower(col_s)][1]
-  col_c_actual <- names(df)[df_names == tolower(col_c)][1]
+  col_w_actual <- if (!is.na(col_w)) names(df)[df_names == tolower(col_w)][1] else NA
+  col_s_actual <- if (!is.na(col_s)) names(df)[df_names == tolower(col_s)][1] else NA
+  col_c_actual <- if (!is.na(col_c)) names(df)[df_names == tolower(col_c)][1] else NA
   
-  f_weights <- stats::as.formula(paste0("~", col_w_actual))
-  f_strata <- stats::as.formula(paste0("~", col_s_actual))
-  f_cluster <- stats::as.formula(paste0("~", col_c_actual))
+  f_weights <- if (!is.na(col_w_actual)) stats::as.formula(paste0("~", col_w_actual)) else NULL
+  f_strata  <- if (!is.na(col_s_actual)) stats::as.formula(paste0("~", col_s_actual)) else NULL
+  f_cluster <- if (!is.na(col_c_actual)) stats::as.formula(paste0("~", col_c_actual)) else ~1
   
   svy <- survey::svydesign(
     ids = f_cluster,

@@ -29,8 +29,8 @@ test_that("IHS with extra = FALSE excludes weight/stratum columns", {
   local_mocked_bindings(.ihs_fetch = mock_ihs_fetch)
 
   result <- suppressMessages(IHS("rexp_cat01", round = "IHS5", extra = FALSE))
-  # Weight/stratum columns should not be in output when extra = FALSE
-  extra_cols <- c("stratum", "hhweight")
+  # Weight/strata columns should not be in output when extra = FALSE
+  extra_cols <- c("strata", "hh_wgt")
   expect_false(any(extra_cols %in% names(result)))
 })
 

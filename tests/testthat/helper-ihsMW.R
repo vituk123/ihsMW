@@ -25,8 +25,8 @@ mock_df <- data.frame(
   hh_size = sample(1:9, 10, replace = TRUE),
   urban = factor(sample(c("Urban", "Rural"), 10, replace = TRUE)),
   ea_id = paste0("EA", sample(100:999, 10, replace = TRUE)),
-  stratum = paste0("STR", sample(10:99, 10, replace = TRUE)),
-  hhweight = runif(10, 0.4, 3.1),
+  strata = paste0("STR", sample(10:99, 10, replace = TRUE)),
+  hh_wgt = runif(10, 0.4, 3.1),
   stringsAsFactors = FALSE
 )
 
