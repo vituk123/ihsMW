@@ -1,6 +1,8 @@
-## Resubmission (v0.1.1)
+## Resubmission (v0.1.2)
 
-- This is a resubmission. The previous submission (v0.1.0) was made before final CI/CD stability fixes were pushed to GitHub. This version (v0.1.1) resolves all build and documentation issues identified in the initial automated checks.
+- This is a resubmission. Changes from v0.1.1:
+  - Added `Depends: R (>= 4.1.0)` to declare the minimum R version
+    required by the native pipe `|>` syntax used in the package.
 
 ## Test environments
 
@@ -12,8 +14,11 @@
 
 0 errors | 0 warnings | 1 note
 
-- Note: "checking for future file timestamps ... unable to verify current time" (Transient network issue on check environment).
-
+- NOTE (new submission): The flagged words "IHS" and "Microdata" are
+  not misspellings. IHS is the standard abbreviation for the
+  Integrated Household Survey conducted by Malawi's National
+  Statistical Office, and Microdata refers to the World Bank
+  Microdata Library.
 
 ## Notes for CRAN reviewers
 
