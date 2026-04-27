@@ -1,0 +1,151 @@
+# ihsMW
+
+The `ihsMW` package provides programmatic access to the Malawi
+Integrated Household Survey (IHS) microdata hosted by the World Bank.
+Much like the `WDI` package elegantly bridges World Bank macroscopic
+development indicators into R, `ihsMW` bridges complex, respondent-level
+household microdata endpoints. It removes the friction of manual
+downloads, parsing, and pooling, significantly accelerating research
+workflows.
+
+## Installation
+
+``` r
+# CRAN (coming soon)
+install.packages("ihsMW")
+
+# Development version
+devtools::install_github("vituk123/ihsMW")
+```
+
+## Quick start
+
+``` r
+library(ihsMW)
+ihs_auth()                              # one-time setup
+ihs_search("consumption")              # find variables
+df <- IHS("rexp_cat01", round="IHS5") # download data
+head(df)
+```
+
+## Key features
+
+Discovering targeted survey questions across thousands of potential
+columns is notoriously difficult due to arbitrary module definitions. In
+`ihsMW`, you query intuitive indicators via the built-in search
+functions directly, retrieving exact metadata bounds including
+categorical label translations efficiently prior to extracting raw
+dataset files.
+
+Researchers compiling cross-sectional trends often encounter fractured
+variable names spanning several disparate releases making chronological
+bindings intensely fragile. By leveraging the built-in harmonisation
+engine recursively mapping embedded structures implicitly, querying
+across multiple rounds binds matrices securely bypassing fragmented
+architectures entirely out-of-the-box.
+
+Traditional unweighted aggregations mask significant spatial biases
+inherited during rural stratifications invalidating macroscopic insights
+structurally. Pulling arrays iteratively utilizing dedicated survey
+weighting helpers builds `tbl_svy` instances capturing multi-tiered
+cluster architectures effortlessly.
+
+## Data access note
+
+Accessing the official database necessitates registering a free
+researcher account directly through the World Bank Microdata Library at
+<https://microdata.worldbank.org>. The
+[`ihs_auth()`](https://username.github.io/ihsMW/reference/ihs_auth.md)
+function intelligently walks you through generating a secure token
+natively mapping the credentials persistently out-of-sight ensuring
+frictionless downloads natively.
+
+## Citation
+
+To cite `ihsMW` in publications, please use:
+
+``` bibtex
+@Manual{,
+  title = {ihsMW: Access Malawi Integrated Household Survey Data in R},
+  author = {Vitumbiko Kayuni},
+  year = {2026},
+  note = {R package version 0.1.0},
+  url = {https://github.com/vituk123/ihsMW},
+}
+```
+
+When publishing research utilizing datasets harmonized or accessed via
+`ihsMW`, always cite both the NSO Malawi and the World Bank LSMS. Please
+consult the respective round’s Basic Information Document for the exact
+citation format.
+
+## Contributing
+
+We welcome additions and mappings! Please report bugs, suggest mapping
+configurations, and propose structural adjustments directly on our
+[GitHub Issues](https://github.com/vituk123/ihsMW/issues) and consult
+our CONTRIBUTING.md file.
+
+## License
+
+MIT
+
+# Package index
+
+## Query data
+
+Download IHS microdata into R
+
+- [`IHS()`](https://username.github.io/ihsMW/reference/IHS.md) :
+  Download Malawi IHS microdata
+- [`IHS_survey()`](https://username.github.io/ihsMW/reference/IHS_survey.md)
+  : Create a survey design object for Malawi IHS data
+
+## Discover variables
+
+Search and explore IHS variables without downloading data
+
+- [`ihs_search()`](https://username.github.io/ihsMW/reference/ihs_search.md)
+  : Search across all IHS rounds for variables manually mapped
+- [`ihs_variables()`](https://username.github.io/ihsMW/reference/ihs_variables.md)
+  : Inspect all variables for a study
+- [`ihs_label()`](https://username.github.io/ihsMW/reference/ihs_label.md)
+  : Fetch specific variable label locally or remotely
+- [`ihs_modules()`](https://username.github.io/ihsMW/reference/ihs_modules.md)
+  : Inspect available modules for a study
+
+## Setup and authentication
+
+One-time configuration
+
+- [`ihs_auth()`](https://username.github.io/ihsMW/reference/ihs_auth.md)
+  : Set up World Bank Microdata API Key
+- [`ihs_key_set()`](https://username.github.io/ihsMW/reference/ihs_key_set.md)
+  : Set up World Bank Microdata API Key (Alias)
+
+## Cache management
+
+Manage locally cached data files
+
+- [`ihs_cache_info()`](https://username.github.io/ihsMW/reference/ihs_cache_info.md)
+  : Display Information About Cached IHS Data
+- [`ihs_cache_clear()`](https://username.github.io/ihsMW/reference/ihs_cache_clear.md)
+  : Clear Cached IHS Data
+
+## Harmonisation tools
+
+Tools for cross-round analysis
+
+- [`ihs_crosswalk_check()`](https://username.github.io/ihsMW/reference/ihs_crosswalk_check.md)
+  : Check Crosswalk Health
+
+# Articles
+
+### All vignettes
+
+- [Getting started with
+  ihsMW](https://username.github.io/ihsMW/articles/getting-started.md):
+- [Cross-round harmonisation in
+  ihsMW](https://username.github.io/ihsMW/articles/harmonisation.md):
+- [Using survey weights with
+  ihsMW](https://username.github.io/ihsMW/articles/survey-weights.md):
