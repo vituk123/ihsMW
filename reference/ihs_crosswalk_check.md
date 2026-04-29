@@ -7,8 +7,15 @@ variables needing manual review.
 ## Usage
 
 ``` r
-ihs_crosswalk_check()
+ihs_crosswalk_check(verbose = TRUE)
 ```
+
+## Arguments
+
+- verbose:
+
+  Logical. If `TRUE` (default), prints the report to the console using
+  [`message()`](https://rdrr.io/r/base/message.html).
 
 ## Value
 

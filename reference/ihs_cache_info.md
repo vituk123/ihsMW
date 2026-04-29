@@ -11,7 +11,7 @@ ihs_cache_info()
 
 ## Value
 
-Invisibly returns a tibble summarizing the cached files.
+A `tibble` summarizing the cached files.
 
 ## Examples
 

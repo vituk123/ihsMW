@@ -1,4 +1,4 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: Your Name
+    COPYRIGHT HOLDER: Vitumbiko Kayuni
