@@ -1,14 +1,15 @@
 Package: ihsMW
-Title: Access Malawi Integrated Household Survey Data in R
-Version: 0.1.2
+Title: Access 'Malawi Integrated Household Survey' Data
+Version: 0.1.5
 Authors@R: person("Vitumbiko", "Kayuni",
              email = "vitumbikokayuni@gmail.com",
              role = c("aut", "cre"),
              comment = c(ORCID = "0009-0008-4331-3839"))
-Description: Provides programmatic access to the Malawi Integrated Household
-    Survey (IHS) via the World Bank Microdata Library API. Users can search
-    variables, download data for IHS rounds 2 through 5, and work with complex
-    survey designs entirely from R, with no manual file management required.
+Description: Provides programmatic access to the 'Malawi Integrated Household
+    Survey' ('IHS') via the 'World Bank Microdata Library' API
+    <https://microdata.worldbank.org/api-documentation/>. Users can search
+    variables, download data for 'IHS' rounds 2 through 5, and work with complex
+    survey designs, with no manual file management required.
 License: MIT + file LICENSE
 Depends: R (>= 4.1.0)
 URL: https://github.com/vituk123/ihsMW

@@ -7,7 +7,7 @@
 ihs_cache_info()
 }
 \value{
-Invisibly returns a tibble summarizing the cached files.
+A \code{tibble} summarizing the cached files.
 }
 \description{
 Scans the internal \code{ihsMW} cache directory and reports on any previously

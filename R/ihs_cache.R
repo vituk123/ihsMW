@@ -4,7 +4,7 @@
 #' Scans the internal \code{ihsMW} cache directory and reports on any previously
 #' downloaded datasets.
 #'
-#' @return Invisibly returns a tibble summarizing the cached files.
+#' @return A \code{tibble} summarizing the cached files.
 #' @export
 #'
 #' @examples
@@ -16,14 +16,13 @@ ihs_cache_info <- function() {
   files <- list.files(cache_dir, recursive = TRUE, full.names = TRUE)
   
   if (length(files) == 0) {
-    cli::cli_inform("No data cached yet. Use IHS() to download.")
-    return(invisible(dplyr::tibble(
+    return(dplyr::tibble(
       round = character(),
       module = character(),
       format = character(),
       size_mb = numeric(),
       cached_at = as.POSIXct(character())
-    )))
+    ))
   }
   
   # Extract info
@@ -37,12 +36,7 @@ ihs_cache_info <- function() {
     cached_at = file_info$mtime
   )
   
-  # Print formatted table
-  cli::cli_h1("ihsMW Cache Information")
-  cli::cli_inform(paste0("Cache directory: {.path ", cache_dir, "}"))
-  print(res)
-  
-  invisible(res)
+  res
 }
 
 #' Clear Cached IHS Data

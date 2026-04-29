@@ -1,14 +1,11 @@
 # test-cache.R
 # Tests for cache info/clear operations using temporary directories.
 
-test_that("ihs_cache_info() returns empty message when cache is empty", {
+test_that("ihs_cache_info() returns empty tibble when cache is empty", {
   tmp_dir <- withr::local_tempdir()
   local_mocked_bindings(ihs_cache_dir = function() tmp_dir)
 
-  expect_message(
-    result <- ihs_cache_info(),
-    "No data cached"
-  )
+  result <- ihs_cache_info()
   expect_s3_class(result, "tbl_df")
   expect_equal(nrow(result), 0)
 })

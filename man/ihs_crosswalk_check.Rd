@@ -4,7 +4,10 @@
 \alias{ihs_crosswalk_check}
 \title{Check Crosswalk Health}
 \usage{
-ihs_crosswalk_check()
+ihs_crosswalk_check(verbose = TRUE)
+}
+\arguments{
+\item{verbose}{Logical. If \code{TRUE} (default), prints the report to the console using \code{message()}.}
 }
 \value{
 A \code{tibble} containing the master crosswalk, returned invisibly.

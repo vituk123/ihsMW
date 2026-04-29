@@ -1,8 +1,9 @@
-## Resubmission (v0.1.2)
+## Resubmission (v0.1.5)
 
-- This is a resubmission. Changes from v0.1.1:
-  - Added `Depends: R (>= 4.1.0)` to declare the minimum R version
-    required by the native pipe `|>` syntax used in the package.
+- This is a resubmission. Changes from v0.1.4:
+  - Removed redundant "in R" from the Title and Description in the `DESCRIPTION` file as requested by the reviewer.
+  - Updated the `LICENSE` file to replace "Your Name" with the actual copyright holder ("Vitumbiko Kayuni").
+  - No other code changes were made from the v0.1.4 submission.
 
 ## Test environments
 
