@@ -1,12 +1,20 @@
-## Resubmission (v0.1.5)
+## Resubmission (v0.2.1)
 
-- This is a resubmission. Changes from v0.1.4:
-  - Removed redundant "in R" from the Title and Description in the `DESCRIPTION` file as requested by the reviewer.
-  - Updated the `LICENSE` file to replace "Your Name" with the actual copyright holder ("Vitumbiko Kayuni").
-  - No other code changes were made from the v0.1.4 submission.
+This is a resubmission of the offline-first pivot.
+Compared to the previous submission (v0.2.0), this version:
+- Added `^scratch$` to `.Rbuildignore` to prevent the non-standard `scratch` directory from being included in the source archive.
+- Added `winsorization` (and variations) to `inst/WORDLIST` to resolve the spelling check NOTE.
+
+Key changes from the original CRAN release:
+- Removed all external API orchestration, World Bank NADA dependencies, and authentication.
+- Removed imports of `httr2`, `httptest2`, `rappdirs`, and `stringdist` to simplify the dependency tree.
+- Built a bundled, comprehensive database of 1,608 region-crop-unit-condition conversion factors in the package.
+- Added a robust offline unit-conversion engine (`ihs_convert_units()`) utilizing these official NSO conversion factors.
+- All testing and execution are now completely local and offline-first.
 
 ## Test environments
 
+- local Apple Silicon Mac, macOS Sequoia 15.1, R version 4.4.2
 - Ubuntu 24.04 (GitHub Actions), R release and R devel
 - Windows Server 2022 (GitHub Actions), R release
 - macOS 14 (GitHub Actions), R release
@@ -15,25 +23,10 @@
 
 0 errors | 0 warnings | 1 note
 
-- NOTE (new submission): The flagged words "IHS" and "Microdata" are
-  not misspellings. IHS is the standard abbreviation for the
-  Integrated Household Survey conducted by Malawi's National
-  Statistical Office, and Microdata refers to the World Bank
-  Microdata Library.
+- The only note is: "checking for future file timestamps ... NOTE: unable to verify current time". This is environment-specific during standard checking under certain network/time-server restrictions.
 
 ## Notes for CRAN reviewers
 
-- This package downloads data at runtime from the World Bank Microdata Library.
-  Users must register for a free account and obtain an API key via `ihs_auth()`.
-  No data is bundled with the package.
-
-- All tests mock HTTP calls using httptest2. Tests do not require an API key
-  or internet connection.
-
-- The package stores a user API key in `.Renviron` (with user consent via
-  `ihs_auth()`). This is the same pattern used by the gh, googledrive, and
-  rtweet packages.
-
-- The only file written to disk by the package is the user's data cache, stored
-  in `rappdirs::user_cache_dir("ihsMW")`. The cache can be cleared with
-  `ihs_cache_clear()`.
+- This package contains no network operations or external API connections.
+- It ships with reference CSV metadata: `ihs_crosswalk.csv` (harmonisation crosswalk) and `crop_conversion_factors.csv` (NSO agricultural crop unit-to-kg factors).
+- No directories or files are written to disk during ordinary execution.

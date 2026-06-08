@@ -1,0 +1,108 @@
+Total pages: 1906
+
+--- Page 3 ---
+Version 03 - Unit conversion factor for food items and caloric conversion factor datasets has been added.
+Version 04 - Seasonal and permanent crops conversion factor and geo-variables data have been added. Updated BID
+
+--- Page 18 ---
+ihs_foodconversion_factor_2020.dta
+Unit conversion factor data for food items. 1768 8
+caloric_conversionfactor.dta
+Caloric conversion factor data. 142 4
+ihs_treeconversion_factor_2020.dta
+Permanent crops conversion factor data 153 6
+ihs_seasonalcropconversion_factor_2020.dta
+Seasonal crops conversion factor data 857 7
+
+--- Page 165 ---
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+Unit conversion factor data for food items.
+V3291 factor 2019 Factor
+V3292 source Source of the Conversion Factor
+
+--- Page 166 ---
+Data ﬁle: caloric_conversionfactor.dta
+Caloric conversion factor data.
+
+--- Page 170 ---
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+Permanent crops conversion factor data
+V3352 conversion KG-Equivalent Weight For Region-Crop-Unit-Condition Combo
+V3353 collectionround Round in Which Conversion Factor Was Collected
+
+--- Page 171 ---
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+Seasonal crops conversion factor data
+V3359 conversion KG-Equivalent Weight For Region-Crop-Unit-Condition Combo
+V3360 collectionround Round in Which Conversion Factor Was Collected
+
+--- Page 1831 ---
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+
+--- Page 1832 ---
+20 LITRE PAIL 2 0.1%
+GABA PAIL 1 0.1%
+HALF PAIL 1 0.1%
+PAIL 2 0.1%
+PAIL (LARGE) 6 0.3%
+PAIL (MEDIUM) 5 0.3%
+PAIL (SMALL) 8 0.5%
+PAIL (UNSPECIFIED) 4 0.2%
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+
+--- Page 1833 ---
+FACTOR: 2019 Factor
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+SOURCE: Source of the Conversion Factor
+Data ﬁle: ihs_foodconversion_factor_2020.dta
+2 Imputed Factor Based on Other Item-Units 71 4%
+
+--- Page 1834 ---
+Data ﬁle: caloric_conversionfactor.dta
+Data ﬁle: caloric_conversionfactor.dta
+Data ﬁle: caloric_conversionfactor.dta
+Data ﬁle: caloric_conversionfactor.dta
+
+--- Page 1854 ---
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+
+--- Page 1855 ---
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+PAIL (LARGE) 4 2.6%
+PAIL (MEDIUM) 3 2%
+PAIL (SMALL) 1 0.7%
+PAIL LARGE 30 19.6%
+PAIL MEDIUM 31 20.3%
+PAIL SMALL 25 16.3%
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+
+--- Page 1856 ---
+CONVERSION: KG-Equivalent Weight For Region-Crop-Unit-Condition Combo
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+COLLECTIONROUND: Round in Which Conversion Factor Was Collected
+Data ﬁle: ihs_treeconversion_factor_2020.dta
+
+--- Page 1857 ---
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+
+--- Page 1858 ---
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+
+--- Page 1859 ---
+PAIL (LARGE) 175 20.4%
+PAIL (MEDIUM) 142 16.6%
+PAIL (SMALL) 149 17.4%
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+
+--- Page 1860 ---
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+CONVERSION: KG-Equivalent Weight For Region-Crop-Unit-Condition Combo
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta
+COLLECTIONROUND: Round in Which Conversion Factor Was Collected
+Data ﬁle: ihs_seasonalcropconversion_factor_2020.dta

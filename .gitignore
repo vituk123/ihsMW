@@ -41,3 +41,7 @@ vignettes/*.pdf
 .Renviron
 .DS_Store
 inst/doc
+/docs/
+/scratch/
+
+
