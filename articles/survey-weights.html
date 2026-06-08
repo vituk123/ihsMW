@@ -5,10 +5,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Using survey weights with ihsMW • ihsMW — Malawi IHS Data in R</title>
+<title>Using survey weights with ihsMW • ihsMW — Clean &amp; Harmonise Malawi IHS Data in R</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/Source_Serif_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -21,9 +21,9 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">ihsMW — Malawi IHS Data in R</a>
+    <a class="navbar-brand me-2" href="../index.html">ihsMW — Clean &amp; Harmonise Malawi IHS Data in R</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,13 +98,13 @@ Section.</em></p>
 </h2>
 <p>To bridge the gap between raw data downloads and proper statistical
 weights seamlessly, <code>ihsMW</code> provides the
-<code><a href="../reference/IHS_survey.html">IHS_survey()</a></code> function. This wrapper extracts the intended
+<code>IHS_survey()</code> function. This wrapper extracts the intended
 indicators alongside their underlying survey dimensions dynamically.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vituk123/ihsMW" class="external-link">ihsMW</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Automatically intercept consumption variables and inject structural weighting</span></span>
-<span><span class="va">svy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IHS_survey.html">IHS_survey</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span>
+<span><span class="va">svy</span> <span class="op">&lt;-</span> <span class="fu">IHS_survey</span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># The output natively masks as a tbl_svy allowing tidy-eval manipulation</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">svy</span><span class="op">)</span></span>
@@ -144,12 +144,12 @@ spans, survey objects targeting discrete rounds <strong>should NOT be
 intelligently pooled naively</strong> under a unified statistical
 architecture without intensive independent reweighting operations.</p>
 <p>Instead, when querying multiple rounds natively,
-<code><a href="../reference/IHS_survey.html">IHS_survey()</a></code> protects inferences iteratively yielding a
+<code>IHS_survey()</code> protects inferences iteratively yielding a
 distinct instantiated named list structure explicitly encapsulating the
 unique configurations cleanly.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Requesting pooled objects targets isolated arrays preserving isolated bounds</span></span>
-<span><span class="va">svy_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IHS_survey.html">IHS_survey</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"IHS4"</span>, <span class="st">"IHS5"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">svy_list</span> <span class="op">&lt;-</span> <span class="fu">IHS_survey</span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"IHS4"</span>, <span class="st">"IHS5"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Apply functional iteration computing the unique representation safely</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">svy_list</span>, <span class="kw">function</span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">{</span></span>
@@ -215,10 +215,10 @@ implicitly.</p>
 code workflows resulting in structurally invalid endpoints natively:</p>
 <ul>
 <li>
-<strong>Using raw <code><a href="../reference/IHS.html">IHS()</a></code> outcomes:</strong> Extracting
+<strong>Using raw <code>IHS()</code> outcomes:</strong> Extracting
 variables exclusively natively bypassing survey targets avoids
 structural weights natively skewing estimates entirely inappropriately.
-Always utilize <code><a href="../reference/IHS_survey.html">IHS_survey()</a></code> if inference depends on
+Always utilize <code>IHS_survey()</code> if inference depends on
 it.</li>
 <li>
 <strong>Naive pooling across bounds:</strong> Extracting

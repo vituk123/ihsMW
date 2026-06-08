@@ -27,12 +27,12 @@ urban tracks.
 ## 2. The IHS_survey() function
 
 To bridge the gap between raw data downloads and proper statistical
-weights seamlessly, `ihsMW` provides the
-[`IHS_survey()`](https://username.github.io/ihsMW/reference/IHS_survey.md)
-function. This wrapper extracts the intended indicators alongside their
-underlying survey dimensions dynamically.
+weights seamlessly, `ihsMW` provides the `IHS_survey()` function. This
+wrapper extracts the intended indicators alongside their underlying
+survey dimensions dynamically.
 
 ``` r
+
 library(ihsMW)
 
 # Automatically intercept consumption variables and inject structural weighting
@@ -52,6 +52,7 @@ If you prefer classic structural base approximations using the `survey`
 package:
 
 ``` r
+
 library(survey)
 
 # Compute the statistically accurate, nationally representative average
@@ -65,6 +66,7 @@ Alternatively, leverage the `srvyr` package bridging `dplyr` pipelines
 into weighted topologies intuitively:
 
 ``` r
+
 library(srvyr)
 
 # Tidy-style summaries mapping the underlying survey dimensions natively
@@ -81,13 +83,12 @@ spans, survey objects targeting discrete rounds **should NOT be
 intelligently pooled naively** under a unified statistical architecture
 without intensive independent reweighting operations.
 
-Instead, when querying multiple rounds natively,
-[`IHS_survey()`](https://username.github.io/ihsMW/reference/IHS_survey.md)
-protects inferences iteratively yielding a distinct instantiated named
-list structure explicitly encapsulating the unique configurations
-cleanly.
+Instead, when querying multiple rounds natively, `IHS_survey()` protects
+inferences iteratively yielding a distinct instantiated named list
+structure explicitly encapsulating the unique configurations cleanly.
 
 ``` r
+
 # Requesting pooled objects targets isolated arrays preserving isolated bounds
 svy_list <- IHS_survey("rexp_cat01", round = c("IHS4", "IHS5"))
 
@@ -121,13 +122,10 @@ natively avoiding invalid proxy mappings implicitly.
 Researchers approaching the package frequently implement standard code
 workflows resulting in structurally invalid endpoints natively:
 
-- **Using raw
-  [`IHS()`](https://username.github.io/ihsMW/reference/IHS.md)
-  outcomes:** Extracting variables exclusively natively bypassing survey
-  targets avoids structural weights natively skewing estimates entirely
-  inappropriately. Always utilize
-  [`IHS_survey()`](https://username.github.io/ihsMW/reference/IHS_survey.md)
-  if inference depends on it.
+- **Using raw `IHS()` outcomes:** Extracting variables exclusively
+  natively bypassing survey targets avoids structural weights natively
+  skewing estimates entirely inappropriately. Always utilize
+  `IHS_survey()` if inference depends on it.
 - **Naive pooling across bounds:** Extracting `IHS(round = "all")` into
   a static `.dta` equivalent and independently wrapping it natively into
   a single global `.svydesign()` fundamentally crashes cluster targets

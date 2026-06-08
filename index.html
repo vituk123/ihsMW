@@ -5,17 +5,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Access Malawi Integrated Household Survey Data • ihsMW — Malawi IHS Data in R</title>
+<title>Clean and Harmonise Malawi Integrated Household Survey Data • ihsMW — Clean &amp; Harmonise Malawi IHS Data in R</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="deps/Source_Serif_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Access Malawi Integrated Household Survey Data">
-<meta name="description" content="Provides programmatic access to the Malawi Integrated Household Survey (IHS) via the World Bank Microdata Library API &lt;https://microdata.worldbank.org/api-documentation/&gt;. Users can search variables, download data for IHS rounds 2 through 5, and work with complex survey designs, with no manual file management required.">
-<meta property="og:description" content="Provides programmatic access to the Malawi Integrated Household Survey (IHS) via the World Bank Microdata Library API &lt;https://microdata.worldbank.org/api-documentation/&gt;. Users can search variables, download data for IHS rounds 2 through 5, and work with complex survey designs, with no manual file management required.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Clean and Harmonise Malawi Integrated Household Survey Data">
+<meta name="description" content="An offline suite of tools to clean, aggregate, and harmonise data from the Malawi Integrated Household Survey (IHS). Provides crop-specific unit conversions, stratified winsorization, and automatic cross-round harmonisation for complex survey designs.">
+<meta property="og:description" content="An offline suite of tools to clean, aggregate, and harmonise data from the Malawi Integrated Household Survey (IHS). Provides crop-specific unit conversions, stratified winsorization, and automatic cross-round harmonisation for complex survey designs.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -23,9 +23,9 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="index.html">ihsMW — Malawi IHS Data in R</a>
+    <a class="navbar-brand me-2" href="index.html">ihsMW — Clean &amp; Harmonise Malawi IHS Data in R</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,8 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The <code>ihsMW</code> package provides programmatic access to the Malawi Integrated Household Survey (IHS) microdata hosted by the World Bank. Much like the <code>WDI</code> package elegantly bridges World Bank macroscopic development indicators into R, <code>ihsMW</code> bridges complex, respondent-level household microdata endpoints. It removes the friction of manual downloads, parsing, and pooling, significantly accelerating research workflows.</p>
+<p>The <code>ihsMW</code> package provides a robust, offline suite of tools to clean, aggregate, and harmonise data from the Malawi Integrated Household Survey (IHS). It is designed by and for development economists and data scientists, replacing hundreds of lines of brittle, project-specific data wrangling scripts with a single, citable, and defensible pipeline.</p>
+<p><em>Note: Due to World Bank data access restrictions, this package no longer downloads raw microdata via the NADA API. You must manually download the required <code>.dta</code> or <code>.csv</code> files from the <a href="https://microdata.worldbank.org" class="external-link">World Bank Microdata Library</a>.</em></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -76,40 +77,66 @@
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vituk123/ihsMW" class="external-link">ihsMW</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/ihs_auth.html">ihs_auth</a></span><span class="op">(</span><span class="op">)</span>                              <span class="co"># one-time setup</span></span>
-<span><span class="fu"><a href="reference/ihs_search.html">ihs_search</a></span><span class="op">(</span><span class="st">"consumption"</span><span class="op">)</span>              <span class="co"># find variables</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/IHS.html">IHS</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round<span class="op">=</span><span class="st">"IHS5"</span><span class="op">)</span> <span class="co"># download data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org" class="external-link">haven</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 1. Load your manually downloaded data</span></span>
+<span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu">read_dta</span><span class="op">(</span><span class="st">"path/to/IHS5/hh_mod_a_filt.dta"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Harmonise column names automatically to the cross-round standard</span></span>
+<span><span class="va">harmonised_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ihs_harmonise.html">ihs_harmonise</a></span><span class="op">(</span><span class="va">raw_data</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 3. Clean, standardize missing codes, and winsorize extreme outliers</span></span>
+<span><span class="va">clean_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ihs_clean.html">ihs_clean</a></span><span class="op">(</span></span>
+<span>  <span class="va">harmonised_df</span>, </span>
+<span>  winsorize_vars <span class="op">=</span> <span class="st">"consumption"</span>, </span>
+<span>  winsorize_by <span class="op">=</span> <span class="st">"region"</span>, </span>
+<span>  probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.99</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 4. View the audit trail to see exactly what was modified</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">clean_df</span>, <span class="st">"ihs_audit"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
-<p>Discovering targeted survey questions across thousands of potential columns is notoriously difficult due to arbitrary module definitions. In <code>ihsMW</code>, you query intuitive indicators via the built-in search functions directly, retrieving exact metadata bounds including categorical label translations efficiently prior to extracting raw dataset files.</p>
-<p>Researchers compiling cross-sectional trends often encounter fractured variable names spanning several disparate releases making chronological bindings intensely fragile. By leveraging the built-in harmonisation engine recursively mapping embedded structures implicitly, querying across multiple rounds binds matrices securely bypassing fragmented architectures entirely out-of-the-box.</p>
-<p>Traditional unweighted aggregations mask significant spatial biases inherited during rural stratifications invalidating macroscopic insights structurally. Pulling arrays iteratively utilizing dedicated survey weighting helpers builds <code>tbl_svy</code> instances capturing multi-tiered cluster architectures effortlessly.</p>
+<div class="section level3">
+<h3 id="id_1-cross-round-harmonisation">1. Cross-Round Harmonisation<a class="anchor" aria-label="anchor" href="#id_1-cross-round-harmonisation"></a>
+</h3>
+<p>Traditional multi-round analyses require tedious, manual variable mapping. <code>ihsMW</code> includes a built-in, curated crosswalk. Pass any raw IHS dataframe into <code>ihs_harmonise(data, round = "IHS5")</code>, and the package instantly renames columns to their standard, longitudinal identifiers (e.g., automatically mapping <code>hh_a02</code> to <code>region</code> or tracking complex changes like <code>af_bio_12</code> to <code>af_bio_12_x</code> across rounds).</p>
 </div>
-<div class="section level2">
-<h2 id="data-access-note">Data access note<a class="anchor" aria-label="anchor" href="#data-access-note"></a>
-</h2>
-<p>Accessing the official database necessitates registering a free researcher account directly through the World Bank Microdata Library at <a href="https://microdata.worldbank.org" class="external-link uri">https://microdata.worldbank.org</a>. The <code><a href="reference/ihs_auth.html">ihs_auth()</a></code> function intelligently walks you through generating a secure token natively mapping the credentials persistently out-of-sight ensuring frictionless downloads natively.</p>
+<div class="section level3">
+<h3 id="id_2-defensible-data-cleaning">2. Defensible Data Cleaning<a class="anchor" aria-label="anchor" href="#id_2-defensible-data-cleaning"></a>
+</h3>
+<p><code><a href="reference/ihs_clean.html">ihs_clean()</a></code> serves as a master wrapper for standard survey wrangling: - <strong>Missing Value Standardization</strong>: Converts standard survey missing codes (e.g., <code>-99</code>, <code>999</code>) to R <code>NA</code> values automatically. - <strong>Stratified Winsorization</strong>: Caps extreme outliers non-destructively. Use <code><a href="reference/ihs_winsorize.html">ihs_winsorize()</a></code> directly to apply stratified thresholds (e.g., trimming the 99th percentile of consumption separately for urban vs. rural areas to prevent over-trimming poor regions). Original columns are kept, and winsorized columns are appended with a <code>_w</code> suffix. - <strong>Audit Trails</strong>: Every operation is logged and attached as an attribute to your dataframe (<code>attr(df, "ihs_audit")</code>), making your cleaning steps highly transparent for academic replication.</p>
+</div>
+<div class="section level3">
+<h3 id="id_3-crop-specific-unit-conversions">3. Crop-Specific Unit Conversions<a class="anchor" aria-label="anchor" href="#id_3-crop-specific-unit-conversions"></a>
+</h3>
+<p>Agricultural productivity analysis is notoriously difficult due to local units (e.g., pails, heaps, oxcarts). <code><a href="reference/ihs_convert_units.html">ihs_convert_units()</a></code> leverages official NSO crop-specific conversion factors to calculate standard kilograms. A “pail” of groundnuts weighs differently than a “pail” of maize—this function handles the math and warns you if unmapped unit codes exist in your dataset.</p>
+</div>
+<div class="section level3">
+<h3 id="id_4-smart-aggregation">4. Smart Aggregation<a class="anchor" aria-label="anchor" href="#id_4-smart-aggregation"></a>
+</h3>
+<p>Rolling individual-level data up to the household level is simplified with <code><a href="reference/ihs_aggregate.html">ihs_aggregate()</a></code>. It automatically detects column types: summing continuous quantities, applying logical <code>OR</code> for dummy variables, and warning on ambiguous text columns.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite <code>ihsMW</code> in publications, please use:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="va">@Manual</span>{,</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="dt">title</span> = {ihsMW: Access Malawi Integrated Household Survey Data in R},</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="dt">title</span> = {ihsMW: Clean and Harmonise Malawi Integrated Household Survey Data},</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="dt">author</span> = {Vitumbiko Kayuni},</span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="dt">year</span> = {2026},</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.1.0},</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.2.0.9000},</span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="dt">url</span> = {https://github.com/vituk123/ihsMW},</span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>}</span></code></pre></div>
-<p>When publishing research utilizing datasets harmonized or accessed via <code>ihsMW</code>, always cite both the NSO Malawi and the World Bank LSMS. Please consult the respective round’s Basic Information Document for the exact citation format.</p>
+<p>When publishing research utilizing datasets harmonised or cleaned via <code>ihsMW</code>, always cite both the NSO Malawi and the World Bank LSMS. Please consult the respective round’s Basic Information Document for the exact citation format.</p>
 </div>
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>We welcome additions and mappings! Please report bugs, suggest mapping configurations, and propose structural adjustments directly on our <a href="https://github.com/vituk123/ihsMW/issues" class="external-link">GitHub Issues</a> and consult our CONTRIBUTING.md file.</p>
+<p>We welcome additions and mappings! Please report bugs, suggest crosswalk configurations, and propose structural adjustments directly on our <a href="https://github.com/vituk123/ihsMW/issues" class="external-link">GitHub Issues</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
@@ -120,6 +147,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=ihsMW" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/vituk123/ihsMW/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/vituk123/ihsMW/issues" class="external-link">Report a bug</a></li>
 </ul>

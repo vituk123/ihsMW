@@ -3,8 +3,8 @@
 ### All vignettes
 
 - [Getting started with
-  ihsMW](https://username.github.io/ihsMW/articles/getting-started.md):
+  ihsMW](https://vituk123.github.io/ihsMW/articles/getting-started.md):
 - [Cross-round harmonisation in
-  ihsMW](https://username.github.io/ihsMW/articles/harmonisation.md):
+  ihsMW](https://vituk123.github.io/ihsMW/articles/harmonisation.md):
 - [Using survey weights with
-  ihsMW](https://username.github.io/ihsMW/articles/survey-weights.md):
+  ihsMW](https://vituk123.github.io/ihsMW/articles/survey-weights.md):

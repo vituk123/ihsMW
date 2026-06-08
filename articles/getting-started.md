@@ -12,6 +12,7 @@ You can install the development version of `ihsMW` from GitHub using the
 `pak` or `remotes` package:
 
 ``` r
+
 # Install from GitHub
 pak::pak("vituk123/ihsMW")
 # or
@@ -31,6 +32,7 @@ Run the authentication wizard directly from R. It will dynamically guide
 you toward generating an API key securely:
 
 ``` r
+
 library(ihsMW)
 
 # Open the interactive authentication wizard
@@ -44,6 +46,7 @@ string.
 Then, register your key within the package seamlessly:
 
 ``` r
+
 ihs_auth("your_alphanumeric_api_key_goes_here")
 ```
 
@@ -60,6 +63,7 @@ disparities across distinct rounds (IHS2 to IHS5).
 You can explicitly search this map utilizing descriptive keywords:
 
 ``` r
+
 # Look up variables related to consumption
 ihs_search("consumption")
 ```
@@ -69,6 +73,7 @@ from an explicit survey round implicitly avoiding unnecessary scope
 overlaps:
 
 ``` r
+
 # Find age-related variables specifically monitored during IHS5
 ihs_search("age", round = "IHS5")
 ```
@@ -78,32 +83,32 @@ contexts, explore modules seamlessly natively leveraging the World Bank
 infrastructure:
 
 ``` r
+
 # Look at all modules administered in IHS5
 ihs_modules("IHS5")
 ```
 
-Use
-[`ihs_label()`](https://username.github.io/ihsMW/reference/ihs_label.md)
-natively referencing Stata attributes preserving explicit meaning behind
-discrete identifiers exactly mirroring internal documentation structures
-natively:
+Use `ihs_label()` natively referencing Stata attributes preserving
+explicit meaning behind discrete identifiers exactly mirroring internal
+documentation structures natively:
 
 ``` r
+
 ihs_label("rexp_cat01")
 ```
 
 ## 4. Downloading data
 
 Once your targeted harmonised variables are identified, use the
-overarching [`IHS()`](https://username.github.io/ihsMW/reference/IHS.md)
-extractor capturing raw microdata formatting seamlessly binding values
-natively resolving dependencies securely across cache targets without
-rigid management requirements.
+overarching `IHS()` extractor capturing raw microdata formatting
+seamlessly binding values natively resolving dependencies securely
+across cache targets without rigid management requirements.
 
 Acquire standalone elements cleanly extracting structural
 representations iteratively locally:
 
 ``` r
+
 # Simple extraction targeted against IHS5
 df_simple <- IHS("rexp_cat01", round = "IHS5")
 ```
@@ -113,6 +118,7 @@ variables pooled simultaneously across disjointed rounds without manual
 file joining restrictions matching parameters reliably natively:
 
 ``` r
+
 # Multi-round pooled extractions mapping harmonisations intelligently
 df_multi <- IHS(c("rexp_cat01", "hh_a02"), round = c("IHS4", "IHS5"))
 ```
@@ -133,6 +139,7 @@ discovery against consumption distributions smoothly integrating
 visualization bindings securely directly formatting outputs correctly.
 
 ``` r
+
 library(ihsMW)
 library(dplyr)
 library(ggplot2)

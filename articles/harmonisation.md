@@ -41,6 +41,7 @@ masking the complexity.
 You can inspect the underlying crosswalk schema natively:
 
 ``` r
+
 library(ihsMW)
 
 # Load the raw crosswalk embedded inside the package
@@ -57,16 +58,18 @@ The package exposes a macro-level validation tracker summarizing the
 crosswalk’s health efficiently:
 
 ``` r
+
 # Prints a report showing variable availability across rounds
 ihs_crosswalk_check()
 ```
 
 To zero in on specific indicators,
-[`ihs_search()`](https://username.github.io/ihsMW/reference/ihs_search.md)
+[`ihs_search()`](https://vituk123.github.io/ihsMW/reference/ihs_search.md)
 exposes exactly which rounds recorded the variable. You can manipulate
 the underlying `tibble` directly to review coverage:
 
 ``` r
+
 library(dplyr)
 
 # Search for consumption and inspect coverage arrays
@@ -95,15 +98,31 @@ normalizing the semantic differences in your data appendix.
 
 ## 5. Multi-round worked example
 
-The harmonisation pipeline intercepts requests natively yielding pooled
-arrays iteratively appending tracking boundaries effortlessly.
+The harmonisation pipeline intercepts raw loaded dataframes and renames
+columns seamlessly based on the internal crosswalk.
 
 ``` r
-# Extract consumption metrics mapped identically across IHS3, IHS4, and IHS5
-df <- IHS("rexp_cat01", round = c("IHS3", "IHS4", "IHS5"))
 
-# The output natively includes an `ihs_round` character tracking origins
-df |>
+library(ihsMW)
+library(haven)
+library(dplyr)
+
+# 1. Load your manually downloaded data
+# Example: Using the household module from IHS3 and IHS4
+ihs3_raw <- read_dta("path/to/IHS3/hh_mod_a_filt.dta")
+ihs4_raw <- read_dta("path/to/IHS4/hh_mod_a_filt.dta")
+
+# 2. Harmonise column names automatically to the cross-round standard
+ihs3_harmonised <- ihs_harmonise(ihs3_raw, round = "IHS3")
+ihs4_harmonised <- ihs_harmonise(ihs4_raw, round = "IHS4")
+
+# 3. Bind the rounds securely
+# Because the columns are harmonised, they bind cleanly.
+# The `ihs_round` character vector is natively appended to track origins.
+df_pooled <- bind_rows(ihs3_harmonised, ihs4_harmonised)
+
+# 4. Analyze cross-round trends
+df_pooled |>
   group_by(ihs_round) |>
   summarise(mean_cons = mean(rexp_cat01, na.rm = TRUE))
 ```

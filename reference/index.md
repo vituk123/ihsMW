@@ -1,48 +1,34 @@
 # Package index
 
-## Query data
+## Discover & Harmonise
 
-Download IHS microdata into R
+Functions for exploring variable metadata and performing cross-round
+alignment
 
-- [`IHS()`](https://username.github.io/ihsMW/reference/IHS.md) :
-  Download Malawi IHS microdata
-- [`IHS_survey()`](https://username.github.io/ihsMW/reference/IHS_survey.md)
-  : Create a survey design object for Malawi IHS data
-
-## Discover variables
-
-Search and explore IHS variables without downloading data
-
-- [`ihs_search()`](https://username.github.io/ihsMW/reference/ihs_search.md)
+- [`ihs_search()`](https://vituk123.github.io/ihsMW/reference/ihs_search.md)
   : Search across all IHS rounds for variables manually mapped
-- [`ihs_variables()`](https://username.github.io/ihsMW/reference/ihs_variables.md)
-  : Inspect all variables for a study
-- [`ihs_label()`](https://username.github.io/ihsMW/reference/ihs_label.md)
-  : Fetch specific variable label locally or remotely
-- [`ihs_modules()`](https://username.github.io/ihsMW/reference/ihs_modules.md)
-  : Inspect available modules for a study
+- [`ihs_harmonise()`](https://vituk123.github.io/ihsMW/reference/ihs_harmonise.md)
+  : Harmonise Raw IHS Data
+- [`ihs_crosswalk_check()`](https://vituk123.github.io/ihsMW/reference/ihs_crosswalk_check.md)
+  : Check the comparability of variables across IHS rounds
 
-## Setup and authentication
+## Data Cleaning Suite
 
-One-time configuration
+Robust offline data cleaning, winsorization, and missing code conversion
 
-- [`ihs_auth()`](https://username.github.io/ihsMW/reference/ihs_auth.md)
-  : Set up World Bank Microdata API Key
-- [`ihs_key_set()`](https://username.github.io/ihsMW/reference/ihs_key_set.md)
-  : Set up World Bank Microdata API Key (Alias)
+- [`ihs_clean()`](https://vituk123.github.io/ihsMW/reference/ihs_clean.md)
+  : Clean and Harmonise IHS Data
+- [`ihs_standardize_missing()`](https://vituk123.github.io/ihsMW/reference/ihs_standardize_missing.md)
+  : Standardize Survey Missing Codes
+- [`ihs_winsorize()`](https://vituk123.github.io/ihsMW/reference/ihs_winsorize.md)
+  : Winsorize Continuous Variables
 
-## Cache management
+## Agriculture & Aggregation
 
-Manage locally cached data files
+NSO crop conversion factor calculations and household-level aggregation
+tools
 
-- [`ihs_cache_info()`](https://username.github.io/ihsMW/reference/ihs_cache_info.md)
-  : Display Information About Cached IHS Data
-- [`ihs_cache_clear()`](https://username.github.io/ihsMW/reference/ihs_cache_clear.md)
-  : Clear Cached IHS Data
-
-## Harmonisation tools
-
-Tools for cross-round analysis
-
-- [`ihs_crosswalk_check()`](https://username.github.io/ihsMW/reference/ihs_crosswalk_check.md)
-  : Check Crosswalk Health
+- [`ihs_convert_units()`](https://vituk123.github.io/ihsMW/reference/ihs_convert_units.md)
+  : Convert Agricultural Units to Kilograms
+- [`ihs_aggregate()`](https://vituk123.github.io/ihsMW/reference/ihs_aggregate.md)
+  : Smart Aggregation to Household Level

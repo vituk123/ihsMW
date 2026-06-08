@@ -5,10 +5,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Getting started with ihsMW • ihsMW — Malawi IHS Data in R</title>
+<title>Getting started with ihsMW • ihsMW — Clean &amp; Harmonise Malawi IHS Data in R</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/Source_Serif_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -21,9 +21,9 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">ihsMW — Malawi IHS Data in R</a>
+    <a class="navbar-brand me-2" href="../index.html">ihsMW — Clean &amp; Harmonise Malawi IHS Data in R</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,13 +98,13 @@ guide you toward generating an API key securely:</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vituk123/ihsMW" class="external-link">ihsMW</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Open the interactive authentication wizard</span></span>
-<span><span class="fu"><a href="../reference/ihs_auth.html">ihs_auth</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">ihs_auth</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This command will open the World Bank Microdata Library in your
 browser. Register, navigate to your profile, generate a token, and copy
 the string.</p>
 <p>Then, register your key within the package seamlessly:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ihs_auth.html">ihs_auth</a></span><span class="op">(</span><span class="st">"your_alphanumeric_api_key_goes_here"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">ihs_auth</span><span class="op">(</span><span class="st">"your_alphanumeric_api_key_goes_here"</span><span class="op">)</span></span></code></pre></div>
 <p>This procedure only needs to be completed once mapping your
 credentials persistently to your <code>~/.Renviron</code> profile
 securely on your local device.</p>
@@ -131,32 +131,32 @@ survey contexts, explore modules seamlessly natively leveraging the
 World Bank infrastructure:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Look at all modules administered in IHS5</span></span>
-<span><span class="fu"><a href="../reference/ihs_modules.html">ihs_modules</a></span><span class="op">(</span><span class="st">"IHS5"</span><span class="op">)</span></span></code></pre></div>
-<p>Use <code><a href="../reference/ihs_label.html">ihs_label()</a></code> natively referencing Stata attributes
+<span><span class="fu">ihs_modules</span><span class="op">(</span><span class="st">"IHS5"</span><span class="op">)</span></span></code></pre></div>
+<p>Use <code>ihs_label()</code> natively referencing Stata attributes
 preserving explicit meaning behind discrete identifiers exactly
 mirroring internal documentation structures natively:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ihs_label.html">ihs_label</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">ihs_label</span><span class="op">(</span><span class="st">"rexp_cat01"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="downloading-data">4. Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h2>
 <p>Once your targeted harmonised variables are identified, use the
-overarching <code><a href="../reference/IHS.html">IHS()</a></code> extractor capturing raw microdata
+overarching <code>IHS()</code> extractor capturing raw microdata
 formatting seamlessly binding values natively resolving dependencies
 securely across cache targets without rigid management requirements.</p>
 <p>Acquire standalone elements cleanly extracting structural
 representations iteratively locally:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Simple extraction targeted against IHS5</span></span>
-<span><span class="va">df_simple</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IHS.html">IHS</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">df_simple</span> <span class="op">&lt;-</span> <span class="fu">IHS</span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span></code></pre></div>
 <p>The true power of <code>ihsMW</code> extends gracefully targeting
 multiple variables pooled simultaneously across disjointed rounds
 without manual file joining restrictions matching parameters reliably
 natively:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Multi-round pooled extractions mapping harmonisations intelligently</span></span>
-<span><span class="va">df_multi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IHS.html">IHS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, <span class="st">"hh_a02"</span><span class="op">)</span>, round <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"IHS4"</span>, <span class="st">"IHS5"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">df_multi</span> <span class="op">&lt;-</span> <span class="fu">IHS</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, <span class="st">"hh_a02"</span><span class="op">)</span>, round <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"IHS4"</span>, <span class="st">"IHS5"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The pooled structure integrates an explicit <code>ihs_round</code>
 character string isolating origins intelligently supporting explicit
 group derivations cleanly binding <code>data.frame</code> layers exactly
@@ -182,7 +182,7 @@ correctly.</p>
 <span><span class="fu"><a href="../reference/ihs_search.html">ihs_search</a></span><span class="op">(</span><span class="st">"per capita consumption"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Download IHS5 consumption data</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IHS.html">IHS</a></span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">IHS</span><span class="op">(</span><span class="st">"rexp_cat01"</span>, round <span class="op">=</span> <span class="st">"IHS5"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Quick summary</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>mean_cons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">rexp_cat01</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>

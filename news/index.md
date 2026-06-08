@@ -4,26 +4,20 @@
 
 ### New features
 
-- [`IHS()`](https://username.github.io/ihsMW/reference/IHS.md): Download
-  IHS microdata by variable name, round, and module.
-- [`IHS_survey()`](https://username.github.io/ihsMW/reference/IHS_survey.md):
-  Return survey-design objects for weighted analysis.
-- [`ihs_auth()`](https://username.github.io/ihsMW/reference/ihs_auth.md):
-  One-time API key setup with interactive browser-based guide.
-- [`ihs_search()`](https://username.github.io/ihsMW/reference/ihs_search.md):
+- `IHS()`: Download IHS microdata by variable name, round, and module.
+- `IHS_survey()`: Return survey-design objects for weighted analysis.
+- `ihs_auth()`: One-time API key setup with interactive browser-based
+  guide.
+- [`ihs_search()`](https://vituk123.github.io/ihsMW/reference/ihs_search.md):
   Search variable names and labels across rounds via the crosswalk.
-- [`ihs_variables()`](https://username.github.io/ihsMW/reference/ihs_variables.md):
-  Browse all variables in a round via the live NADA API.
-- [`ihs_label()`](https://username.github.io/ihsMW/reference/ihs_label.md):
-  Retrieve Stata variable labels from the crosswalk or NADA.
-- [`ihs_modules()`](https://username.github.io/ihsMW/reference/ihs_modules.md):
-  List available data modules per round.
-- [`ihs_crosswalk_check()`](https://username.github.io/ihsMW/reference/ihs_crosswalk_check.md):
+- `ihs_variables()`: Browse all variables in a round via the live NADA
+  API.
+- `ihs_label()`: Retrieve Stata variable labels from the crosswalk or
+  NADA.
+- `ihs_modules()`: List available data modules per round.
+- [`ihs_crosswalk_check()`](https://vituk123.github.io/ihsMW/reference/ihs_crosswalk_check.md):
   Assess cross-round variable comparability.
-- [`ihs_cache_info()`](https://username.github.io/ihsMW/reference/ihs_cache_info.md)
-  and
-  [`ihs_cache_clear()`](https://username.github.io/ihsMW/reference/ihs_cache_clear.md):
-  Manage local data cache.
+- `ihs_cache_info()` and `ihs_cache_clear()`: Manage local data cache.
 - `mwi_surveys()`: Overview of supported and planned Malawi surveys.
 
 ### Supported surveys
@@ -35,5 +29,4 @@
 ### Data access
 
 - All data downloaded directly from the World Bank Microdata Library. A
-  free account and API key are required. See
-  [`?ihs_auth`](https://username.github.io/ihsMW/reference/ihs_auth.md).
+  free account and API key are required. See `?ihs_auth`.

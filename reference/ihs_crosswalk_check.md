@@ -1,8 +1,8 @@
-# Check Crosswalk Health
+# Check the comparability of variables across IHS rounds
 
-Evaluates the ihsMW crosswalk variable map. Prints a formatted report
-indicating how many variables are present across rounds, and flags any
-variables needing manual review.
+Evaluates the completeness and comparability of variables across the
+available IHS rounds (IHS2, IHS3, IHS4, IHS5) using the bundled
+crosswalk.
 
 ## Usage
 
@@ -14,17 +14,19 @@ ihs_crosswalk_check(verbose = TRUE)
 
 - verbose:
 
-  Logical. If `TRUE` (default), prints the report to the console using
-  [`message()`](https://rdrr.io/r/base/message.html).
+  Logical. If `TRUE` (default), prints a summary report to the console
+  using `cli`.
 
 ## Value
 
-A `tibble` containing the master crosswalk, returned invisibly.
+A `tibble` containing the full crosswalk. If `verbose` is `TRUE`, also
+prints a summary.
 
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
-cw <- ihs_crosswalk_check()
+  # Check the crosswalk and print a report
+  cw <- ihs_crosswalk_check()
 } # }
 ```
